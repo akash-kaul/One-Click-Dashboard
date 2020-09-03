@@ -10,14 +10,15 @@ import plotly.graph_objects as go
 import argparse
 import json
 
-
+# Main title
 st.title('Dynamically Visualize South Korea COVID-19 data using TigerGraph and Streamlit')
 
+# Create sidebar with widgets
 min_age, max_age = st.sidebar.slider("Select Age Range", 0, 104, [10, 20])
 sex = st.sidebar.multiselect('Sex', ['male', 'female'])
 
 
-
+# Grab text file and read in data
 with open ('streamlit.txt', 'r') as file:
     x = file.read().split(' ')
 print(x)
@@ -30,7 +31,7 @@ cert = False
 if x[4] == 'True':
     cert = True
 
-
+# Connect to graph, run query
 graph = tg.TigerGraphConnection(host=host, username=username, graphname=graphname, password=password, useCert=cert)
 API_Secret = graph.createSecret()
 API_Token = graph.getToken(API_Secret, setToken=True, lifetime=None)[0]
@@ -68,12 +69,12 @@ st.map(locations)
 s = age.value_counts()
 age = pd.DataFrame({'Age':s.index, 'Count':s.values})
 
+# Create bar chart
 st.write('Bar Chart Age Distribution')
 fig = px.bar(age, x="Age", y="Count")
 st.plotly_chart(fig)
 
-
-
+# Create scatter plot
 st.write('Scatter Plot of Age')
 fig = px.scatter(age, x="Age", y="Count")
 st.plotly_chart(fig)
