@@ -1,2 +1,1 @@
-# OneClickDashboardTigerGraphGraphathon
-Dashboard launcher - submission for TigerGraph Graphathon
+# One Click Dashboard - submission for TigerGraph Graphathon
