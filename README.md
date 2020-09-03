@@ -1,7 +1,7 @@
 # One Click Dashboard - submission for TigerGraph Graphathon
 
 ## Brief Description:
-We created a google Colab notebook that uses interactive widgets to allow a user to automatically launch an interactive dashboard using the TigerGraph covid-19 startet kit
+We created a Google Colab notebook that uses interactive widgets to allow a user to automatically launch an interactive dashboard (made with Streamlit) using the TigerGraph covid-19 startet kit
 
 You can watch a video explaining how the dashboard works [here](https://vimeo.com/454246874).
 
