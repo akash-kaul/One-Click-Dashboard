@@ -1,3 +1,3 @@
 # One Click Dashboard - submission for TigerGraph Graphathon
 
-Video explaining how the dashboard works: [here](https://vimeo.com/454246874)
+You can watch a video explaining how the dashboard works [here](https://vimeo.com/454246874).
