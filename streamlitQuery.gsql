@@ -1,0 +1,19 @@
+CREATE QUERY streamlit() FOR GRAPH MyGraph { 
+
+	/*
+	* Returns the Age, Sex, Lat, and Lon of patients *
+	*/
+	TYPEDEF TUPLE<FLOAT latitude, FLOAT longitude> Loc;
+  AvgAccum @Age; # Like a variable
+  ListAccum<Loc> @Loc;
+	
+	seed = {Patient.*};
+
+s2 = select s from seed:s - (PATIENT_TRAVELED:e) - :tgt
+	    where s.birth_year >= 1
+	    ACCUM s.@Loc += Loc(tgt.latitude, tgt.longitude),  # Travels through the edge and gets the latitude and longitude 
+	          s.@Age += year(now()) - s.birth_year; # Gets the Age of the person
+   
+
+PRINT  s2[s2.@Age AS Age, s2.sex AS Sex, s2.@Loc AS Location];
+}
